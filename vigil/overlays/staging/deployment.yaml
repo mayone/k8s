@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vigil
+  labels:
+    app.kubernetes.io/name: vigil
+spec:
+  template:
+    spec:
+      containers:
+        - name: vigil
+          env:
+            - name: CFG_ENV
+              value: 'staging'

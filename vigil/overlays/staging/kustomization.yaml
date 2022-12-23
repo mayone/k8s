@@ -1,0 +1,10 @@
+# nameSuffix: -staging
+resources:
+- ../../base
+patchesStrategicMerge:
+- deployment.yaml
+configMapGenerator:
+- name: vigil-config
+  behavior: merge
+  files:
+  - vigil.cfg

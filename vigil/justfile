@@ -1,4 +1,5 @@
-alias s := show
+alias b := build
+alias v:= view
 alias a := apply
 alias d := delete
 alias f := forward
@@ -6,8 +7,11 @@ alias f := forward
 _default:
     @just --list
 
-show KUS_DIR:
+build KUS_DIR:
     kubectl kustomize {{KUS_DIR}}
+
+view KUS_DIR:
+    kubectl get -k {{KUS_DIR}}
 
 apply KUS_DIR:
     kubectl apply -k {{KUS_DIR}}
@@ -15,12 +19,5 @@ apply KUS_DIR:
 delete KUS_DIR:
     kubectl delete -k {{KUS_DIR}}
 
-forward:
-    kubectl port-forward deployment/vigil 8080:8080
-
-compare:
-    #!/usr/bin/env bash
-    diff \
-        <(kubectl kustomize overlays/staging) \
-        <(kubectl kustomize overlays/production) |\
-        more
+forward port="8080":
+    kubectl port-forward deployment/vigil {{port}}:8080

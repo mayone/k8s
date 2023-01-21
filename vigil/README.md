@@ -6,22 +6,22 @@
 
 ## Run
 
-### Apply
-```console
-just a <FOLDER_WITH_KUSTOMIZATION>
-```
+```sh
+just a <KUSTOMIZATION_DIR>
 
-### Example: Apply staging
-```console
+# Ex. apply staging
 just a overlays/staging
 ```
 
 ---
 
-## Check deployment
-```console
-kubectl get pods
-kubectl get configMap
+## View deployment
+
+```sh
+just v <KUSTOMIZATION_DIR>
+
+# Ex. view staging
+just v overlays/staging
 ```
 
 ---
@@ -29,7 +29,8 @@ kubectl get configMap
 ## Forward and view
 
 ### Forward service
-```console
+
+```sh
 just f
 ```
 
@@ -40,12 +41,26 @@ just f
 
 ## Delete
 
-### Delete
-```console
-just d <FOLDER_WITH_KUSTOMIZATION>
-```
+```sh
+just d <KUSTOMIZATION_DIR>
 
-### Example: Delete staging
-```console
+# Ex. delete staging
 just d overlays/staging
 ```
+
+---
+
+## Appendix
+
+### Compare staging with production
+
+```sh
+diff \
+    <(kubectl kustomize overlays/staging) \
+    <(kubectl kustomize overlays/production) |\
+    more
+```
+
+## References
+
+- [Declarative Management of Kubernetes Objects Using Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)

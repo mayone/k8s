@@ -1,7 +1,8 @@
 alias b := build
-alias v:= view
+alias v := view
 alias a := apply
 alias d := delete
+alias r := replace
 alias f := forward
 
 _default:
@@ -18,6 +19,9 @@ apply KUS_DIR:
 
 delete KUS_DIR:
     kubectl delete -k {{KUS_DIR}}
+
+replace KUS_DIR:
+    kubectl replace -k {{KUS_DIR}}
 
 forward port="8080":
     kubectl port-forward deployment/vigil {{port}}:8080

@@ -8,3 +8,5 @@ configMapGenerator:
 - name: vigil-config
   files:
   - vigil.cfg
+# generatorOptions:
+#   disableNameSuffixHash: true

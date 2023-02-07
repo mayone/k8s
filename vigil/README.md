@@ -48,6 +48,32 @@ just d <KUSTOMIZATION_DIR>
 just d overlays/staging
 ```
 
+## Rollout (Example)
+
+### Rollout
+```sh
+# Ex. Rollout by set image version to 1.25.0
+kubectl set image deploy/vigil vigil=valeriansaliou/vigil:v1.25.0 --record
+
+# Check rollout history
+kubectl rollout history deploy vigil
+
+# Check deployment image version
+kubectl describe deploy vigil | grep Image:
+```
+
+### Rollback
+```sh
+# Check rollout history
+kubectl rollout history deploy vigil
+
+# Ex. Rollback to specified revision
+kubectl rollout undo deploy vigil --to-revision=1
+
+# Check deployment image version
+kubectl describe deploy vigil | grep Image:
+```
+
 ---
 
 ## Appendix

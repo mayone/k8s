@@ -5,8 +5,8 @@ resources:
   - service.yaml
   - deployment.yaml
 configMapGenerator:
-  - files:
+  - name: vigil-config
+    files:
       - config.cfg
-    name: vigil-config
 # generatorOptions:
 #   disableNameSuffixHash: true

@@ -8,7 +8,7 @@ patches:
   - path: deployment.yaml
 
 configMapGenerator:
-  - behavior: merge
+  - name: vigil-config
+    behavior: merge
     files:
       - config.cfg
-    name: vigil-config

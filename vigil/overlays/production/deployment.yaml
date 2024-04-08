@@ -5,10 +5,13 @@ metadata:
   labels:
     app.kubernetes.io/name: vigil
 spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vigil
   template:
     spec:
       containers:
         - name: vigil
           env:
             - name: CFG_ENV
-              value: 'production'
+              value: "production"
